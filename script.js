@@ -15,7 +15,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
       document.getElementById('message').style.color = 'green';
       // Redirect to Google
       setTimeout(() => {
-        window.location.href = 'https://google.com';
+        window.location.href = 'https://mob.easysport.bet';
       }, 1000); // Delay for 1 second to display the success message
     } else {
       document.getElementById('message').textContent = 'Invalid email or password.';

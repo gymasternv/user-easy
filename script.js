@@ -8,7 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const response = await fetch('users.json');
     const users = await response.json();
 
-    const user = users.find(user => user.email === email && user.password === password);
+    const user = users.find(user => user.email === email);
 
     if (user) {
       document.getElementById('message').textContent = 'Login successful!';

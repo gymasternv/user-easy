@@ -13,12 +13,17 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     if (user) {
       document.getElementById('message').textContent = 'Login successful!';
       document.getElementById('message').style.color = 'green';
-      // Redirect or proceed with application logic
+      // Redirect to Google
+      setTimeout(() => {
+        window.location.href = 'https://google.com';
+      }, 1000); // Delay for 1 second to display the success message
     } else {
       document.getElementById('message').textContent = 'Invalid email or password.';
+      document.getElementById('message').style.color = 'red';
     }
   } catch (error) {
     console.error('Error:', error);
     document.getElementById('message').textContent = 'Error verifying login.';
+    document.getElementById('message').style.color = 'red';
   }
 });

@@ -1,3 +1,5 @@
+const API_URL = 'https://esb-api.vercel.app/api/login';
+
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
   event.preventDefault();
 
@@ -5,22 +7,24 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   const password = document.getElementById('password').value;
 
   try {
-    const response = await fetch('users.json');
-    const users = await response.json();
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
 
-    const user = users.find(user => user.email === email);
-
-    if (user) {
-      document.getElementById('message').textContent = 'Login successful!';
+    const result = await response.json();
+    if (response.ok) {
+      document.getElementById('message').textContent = result.message;
       document.getElementById('message').style.color = 'green';
       window.location.href = 'https://mob.easysport.bet';
     } else {
-      document.getElementById('message').textContent = 'Invalid email or password.';
+      document.getElementById('message').textContent = result.message;
       document.getElementById('message').style.color = 'red';
     }
   } catch (error) {
     console.error('Error:', error);
-    document.getElementById('message').textContent = 'Error verifying login.';
+    document.getElementById('message').textContent = 'Error connecting to the server.';
     document.getElementById('message').style.color = 'red';
   }
 });

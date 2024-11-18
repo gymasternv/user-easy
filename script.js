@@ -5,7 +5,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-
+  
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
